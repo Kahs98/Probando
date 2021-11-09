@@ -12,70 +12,70 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Vehicle")
+@Table(name="Vehicuo")
 public class Vehicle implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-
+private static final long serialVersionUID = 1L;
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idVehicle;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id_vehiculo;
+	
+	@Column(name="nombre", nullable=false, length=150)
+	private String nombre;
 	
 	@ManyToOne
-	@JoinColumn(name = "idUser", nullable = false)
-	private User user;
+	@JoinColumn(name="id_cliente", nullable=false)
+	private Client client;
 	
-	@Column(name = "nameActor", length = 60, nullable = false)
-	private String nameActor;
-	
-	@Column(name="imgActor", length=200, nullable=false)
-	private String imgActor;
+	@ManyToOne
+	@JoinColumn(name="id_ubicacion", nullable=false)
+	private Location location;
 
 	public Vehicle() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Vehicle(int idVehicle, User user, String nameActor, String imgActor) {
+	public Vehicle(int id_vehiculo, String nombre, Client client, Location location) {
 		super();
-		this.idVehicle = idVehicle;
-		this.user = user;
-		this.nameActor = nameActor;
-		this.imgActor = imgActor;
+		this.id_vehiculo = id_vehiculo;
+		this.nombre = nombre;
+		this.client = client;
+		this.location = location;
 	}
 
-	public int getIdVehicle() {
-		return idVehicle;
+	public int getId_vehiculo() {
+		return id_vehiculo;
 	}
 
-	public void setIdVehicle(int idVehicle) {
-		this.idVehicle = idVehicle;
+	public void setId_vehiculo(int id_vehiculo) {
+		this.id_vehiculo = id_vehiculo;
 	}
 
-	public User getUser() {
-		return user;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
-	public String getNameActor() {
-		return nameActor;
+	public Client getClient() {
+		return client;
 	}
 
-	public void setNameActor(String nameActor) {
-		this.nameActor = nameActor;
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
-	public String getImgActor() {
-		return imgActor;
+	public Location getLocation() {
+		return location;
 	}
 
-	public void setImgActor(String imgActor) {
-		this.imgActor = imgActor;
+	public void setLocation(Location location) {
+		this.location = location;
 	}
+
 	
-	
-
 }

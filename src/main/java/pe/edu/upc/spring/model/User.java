@@ -7,84 +7,73 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Users")
+@Table(name="Usuario")
 public class User implements Serializable {
-
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idUser;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id_user;
 	
-	@Column(name="nameUser", nullable=false, length=60)
-	private String nameUser;
+	@Column(name="username", nullable=false, length=50)
+	private String username;
 	
-	@Column(name="emailUser", nullable=false, length=60)
-	private String emailUser;
+	@Column(name="password", nullable=false, length=50)
+	private String password;
 	
-	@Column(name="passwordUser", nullable=false, length=30)
-	private String passwordUser;
-	 
-	
-	@Column(name="passwordConfirmUser", nullable=false, length=30)
-	private String passwordConfirmUser;
+	@OneToOne
+	@JoinColumn(name="id_tipo_usuario", nullable=false)
+	private TypeUser type_user;
 
 	public User() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public User(int idUser, String nameUser, String emailUser, String passwordUser, String passwordConfirmUser) {
+	public User(int id_user, String username, String password, TypeUser type_user) {
 		super();
-		this.idUser = idUser;
-		this.nameUser = nameUser;
-		this.emailUser = emailUser;
-		this.passwordUser = passwordUser;
-		this.passwordConfirmUser = passwordConfirmUser;
+		this.id_user = id_user;
+		this.username = username;
+		this.password = password;
+		this.type_user = type_user;
 	}
 
-	public int getIdUser() {
-		return idUser;
+	public int getId_user() {
+		return id_user;
 	}
 
-	public void setIdUser(int idUser) {
-		this.idUser = idUser;
+	public void setId_user(int id_user) {
+		this.id_user = id_user;
 	}
 
-	public String getNameUser() {
-		return nameUser;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setNameUser(String nameUser) {
-		this.nameUser = nameUser;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public String getEmailUser() {
-		return emailUser;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setEmailUser(String emailUser) {
-		this.emailUser = emailUser;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	public String getPasswordUser() {
-		return passwordUser;
+	public TypeUser getType_user() {
+		return type_user;
 	}
 
-	public void setPasswordUser(String passwordUser) {
-		this.passwordUser = passwordUser;
+	public void setType_user(TypeUser type_user) {
+		this.type_user = type_user;
 	}
-
-	public String getPasswordConfirmUser() {
-		return passwordConfirmUser;
-	}
-
-	public void setPasswordConfirmUser(String passwordConfirmUser) {
-		this.passwordConfirmUser = passwordConfirmUser;
-	}
-
+	
+	
 	
 }

@@ -7,78 +7,58 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Location")
+@Table(name="Location")
 public class Location implements Serializable {
-
+	
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idLocation;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id_ubicacion;
 	
-	@ManyToOne
-	@JoinColumn(name = "idVehicle", nullable = false)
-	private Vehicle idVehicle;
+	@Column(name="latitud", nullable=false, length=50)
+	private int latitud;
 	
-	@Column(name = "latitude", length = 60, nullable = false)
-	private int latitude;
-	
-	@Column(name = "longitude", length = 60, nullable = false)
-	private int longitude;
-	
+	@Column(name="longitud", nullable=false, length=50)
+	private int longitud;
+
 	public Location() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public Location(int idLocation, Vehicle idVehicle, int latitude, int longitude) {
+	public Location(int id_ubicacion, int latitud, int longitud) {
 		super();
-		this.idLocation = idLocation;
-		this.idVehicle = idVehicle;
-		this.latitude = latitude;
-		this.longitude = longitude;
+		this.id_ubicacion = id_ubicacion;
+		this.latitud = latitud;
+		this.longitud = longitud;
 	}
 
-	public int getIdLocation() {
-		return idLocation;
+	public int getId_ubicacion() {
+		return id_ubicacion;
 	}
 
-	public void setIdLocation(int idLocation) {
-		this.idLocation = idLocation;
+	public void setId_ubicacion(int id_ubicacion) {
+		this.id_ubicacion = id_ubicacion;
 	}
 
-	public Vehicle getIdVehicle() {
-		return idVehicle;
+	public int getLatitud() {
+		return latitud;
 	}
 
-	public void setIdVehicle(Vehicle idVehicle) {
-		this.idVehicle = idVehicle;
+	public void setLatitud(int latitud) {
+		this.latitud = latitud;
 	}
 
-	public int getLatitude() {
-		return latitude;
+	public int getLongitud() {
+		return longitud;
 	}
 
-	public void setLatitude(int latitude) {
-		this.latitude = latitude;
-	}
-
-	public int getLongitude() {
-		return longitude;
-	}
-
-	public void setLongitude(int longitude) {
-		this.longitude = longitude;
+	public void setLongitud(int longitud) {
+		this.longitud = longitud;
 	}
 
 	
-
-
-	
-
 }
