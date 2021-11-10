@@ -5,6 +5,7 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 import pe.edu.upc.spring.model.Admin;
+import pe.edu.upc.spring.model.CompanyService;
 import pe.edu.upc.spring.model.Client;
 import pe.edu.upc.spring.model.User;
 
@@ -14,14 +15,11 @@ public class Sesion {
 	
 	private User user;
 	private Client client;
+	private CompanyService companyService;
 	private Admin admin;
 
 	public User getUser() {
 		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 
 	public Client getClient() {
@@ -32,6 +30,14 @@ public class Sesion {
 		this.client = client;
 	}
 
+	public CompanyService getCompanyService() {
+		return companyService;
+	}
+
+	public void setCompanyService(CompanyService companyService) {
+		this.companyService = companyService;
+	}
+
 	public Admin getAdmin() {
 		return admin;
 	}
@@ -39,6 +45,12 @@ public class Sesion {
 	public void setAdmin(Admin admin) {
 		this.admin = admin;
 	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	
 	
 	
 	

@@ -24,6 +24,9 @@ public class Servicio implements Serializable{
 	@ManyToOne
 	@JoinColumn(name="idTipoServicio", nullable=false)
 	private TipoServicio tipoServicio;
+	@ManyToOne
+	@JoinColumn(name="idEmpresaServicio", nullable=false)
+	private CompanyService idEmpresaServicio;
 	
 	@Column(name="nombreServicio", length=40, nullable=false)
 	private String nombre;
@@ -42,11 +45,12 @@ public class Servicio implements Serializable{
 		// TODO Auto-generated constructor stub
 	}
 
-	public Servicio(int idServicio, TipoServicio tipoServicio, String nombre, String lugar, String direccion,
-			String imagen) {
+	public Servicio(int idServicio, TipoServicio tipoServicio, CompanyService idEmpresaServicio, String nombre,
+			String lugar, String direccion, String imagen) {
 		super();
 		this.idServicio = idServicio;
 		this.tipoServicio = tipoServicio;
+		this.idEmpresaServicio = idEmpresaServicio;
 		this.nombre = nombre;
 		this.lugar = lugar;
 		this.direccion = direccion;
@@ -67,6 +71,14 @@ public class Servicio implements Serializable{
 
 	public void setTipoServicio(TipoServicio tipoServicio) {
 		this.tipoServicio = tipoServicio;
+	}
+
+	public CompanyService getIdEmpresaServicio() {
+		return idEmpresaServicio;
+	}
+
+	public void setIdEmpresaServicio(CompanyService idEmpresaServicio) {
+		this.idEmpresaServicio = idEmpresaServicio;
 	}
 
 	public String getNombre() {

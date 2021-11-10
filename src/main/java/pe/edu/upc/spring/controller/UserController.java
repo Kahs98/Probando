@@ -11,9 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sun.el.parser.ParseException;
 
+import pe.edu.upc.spring.model.CompanyService;
 import pe.edu.upc.spring.model.Client;
 import pe.edu.upc.spring.model.User;
-
+import pe.edu.upc.spring.service.iCompanyServiceService;
 import pe.edu.upc.spring.service.iClientService;
 import pe.edu.upc.spring.service.iUserService;
 import pe.edu.upc.spring.utils.Sesion;
@@ -31,6 +32,8 @@ public class UserController {
 	@Autowired
 	private iClientService cService;
 	
+	@Autowired
+	private iCompanyServiceService csService;
 	
 	@RequestMapping("/login")
 	public String goPageLogin(Model model) {
@@ -53,17 +56,17 @@ public class UserController {
 						Client client = findedClient.get();
 						sesion.setClient(client);
 						model.addAttribute("client", client);
-						return "redirect:/servicio/list";
+						return "redirect:/reservation/list";
 					} else {
 						return "redirect:/user/login";
 					}
-				}else {
+				} else {
 					if(currentUser.getType_user().getId_type_user() == 2) {
-						Optional<CleaningStaff> findedCleaningStaff =csService.findByUserId(currentUser.getId_user());
-						if(findedCleaningStaff.isPresent()) {
-							CleaningStaff cleaningStaff = findedCleaningStaff.get();
-							sesion.setCleaningStaff(cleaningStaff);
-							return "redirect:/service/list";
+						Optional<CompanyService> findedCompanyService =csService.findByUserId(currentUser.getId_user());
+						if(findedCompanyService.isPresent()) {
+							CompanyService companyService = findedCompanyService.get();
+							sesion.setCompanyService(companyService);
+							return "redirect:/service/list";//checkear esto luego
 						} else {
 							return "redirect:/user/login";
 						}
@@ -82,6 +85,7 @@ public class UserController {
 	public String Logout() {
 		sesion.setUser(new User());
 		sesion.setClient(new Client());
+		sesion.setCompanyService(new CompanyService());
 		return "login";
 	}
 	
